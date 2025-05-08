@@ -1,0 +1,16 @@
+#define ANALOG_PIN A0  
+#define DIGITAL_LED_PIN 8  
+
+void setup() {
+  pinMode(DIGITAL_LED_PIN, OUTPUT); 
+}
+
+void loop() {
+  int lightLevel = analogRead(ANALOG_PIN); 
+  if(lightLevel > 512) {                 
+    digitalWrite(DIGITAL_LED_PIN, HIGH);  
+  } else {
+    digitalWrite(DIGITAL_LED_PIN, LOW);   
+  }
+  delay(100);                           
+}
