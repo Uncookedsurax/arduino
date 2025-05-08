@@ -1,0 +1,29 @@
+#include <SevSeg.h>
+
+byte numDigits = 4;              
+byte digitPins[] = {10, 11, 12, 13}; 
+byte segmentPins[] = {2, 3, 4, 5, 6, 7, 8, 9}; 
+bool resistorsOnSegments = false; 
+bool updateWithDelays = true;    
+bool leadingZeros = false;        
+bool disableDecPoint = true;     
+
+SevSeg sevseg;                  
+
+void setup() {
+  sevseg.begin(
+    COMMON_CATHODE,              
+    numDigits,                     
+    digitPins,                     
+    segmentPins                 
+  );
+  sevseg.setBrightness(90);       
+}
+
+void loop() {
+  uint8_t randomNum = random(0, 16); 
+  sei();                            
+  sevseg.setNumber(randomNum, 4);  
+  sei();                           
+  delay(1000);                    
+}
